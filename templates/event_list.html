@@ -2,22 +2,22 @@
 {% block title %}Up{% endblock title %}
 
 {% block content %}
-    {% for article in object_list %}
+    {% for Event in object_list %}
         <div class="card">
             <div class="card-header">
                 <span class="font-weight-bold">
-                    {{ article.title }}
+                    {{ Event.title }}
                 </span> &middot;
                 <span class="text-muted">
-                    by {{ articleauthor }} | {{ article.date }}
+                    by {{ Event.author }} | {{ Event.date }}
                 </span>
             </div>
             <div class="card-body">
-                {{ article.body }}
+                {{ Event.body }}
             </div>
             <div class="card-footer text-center text-muted">
-                <a href="{% url 'article_update' article.pk %}">Edit</a> |
-                <a href="{% url 'article_delete' article.pk %}">Delete</a>
+                <a href="{% url 'event_update' Event.pk %}">Edit</a> |
+                <a href="{% url 'event_delete' Event.pk %}">Delete</a>
             </div>
         </div>
         <br>
