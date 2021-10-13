@@ -16,7 +16,8 @@
                 {{ event.body }}
             </div>
             <div>
-                <img src="{{ event.image }}" alt="">
+                {% load static %}
+                <img src="{% static event.image %}" alt="">
             </div>
             <div class="card-footer text-center text-muted">
                 <a href="{% url 'event_update' event.pk %}">Edit</a> |
