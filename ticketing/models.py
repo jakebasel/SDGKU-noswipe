@@ -4,12 +4,13 @@ from django.urls import reverse
 
 class Event(models.Model):
     title = models.CharField(max_length=255)
-    description = models.TextField()
+    body = models.TextField()
     #date = models.DateTimeField(auto_now_add=True)
     date = models.DateTimeField()
     author = models.ForeignKey(
         get_user_model(),
         on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='../static/images/', default = 'null')
 
     def __str__(self):
         return self.title

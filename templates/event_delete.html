@@ -6,7 +6,7 @@
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <p>Are you sure you want to delete "{{ Event.title }}"?</p>
+        <p>Are you sure you want to delete "{{ event.title }}"?</p>
         <input class="btn btn-primary btn-lg news-button" type="submit" value="confirm">
     </form>
 {% endblock content %}

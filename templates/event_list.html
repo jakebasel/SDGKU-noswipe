@@ -2,22 +2,25 @@
 {% block title %}Up{% endblock title %}
 
 {% block content %}
-    {% for Event in object_list %}
+    {% for event in object_list %}
         <div class="card">
             <div class="card-header">
                 <span class="font-weight-bold">
-                    {{ Event.title }}
+                    {{ event.title }}
                 </span> &middot;
                 <span class="text-muted">
-                    by {{ Event.author }} | {{ Event.date }}
+                    by {{ event.author }} | {{ event.date }}
                 </span>
             </div>
             <div class="card-body">
-                {{ Event.body }}
+                {{ event.body }}
+            </div>
+            <div>
+                <img src="{{ event.image }}" alt="">
             </div>
             <div class="card-footer text-center text-muted">
-                <a href="{% url 'event_update' Event.pk %}">Edit</a> |
-                <a href="{% url 'event_delete' Event.pk %}">Delete</a>
+                <a href="{% url 'event_update' event.pk %}">Edit</a> |
+                <a href="{% url 'event_delete' event.pk %}">Delete</a>
             </div>
         </div>
         <br>
