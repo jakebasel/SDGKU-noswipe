@@ -3,21 +3,22 @@
 
 {% block content %}
     {% for event in object_list %}
-        <div class="card">
-            <div class="card-header">
-                <span class="font-weight-bold">
+        <div class="event-box">
+            <div>
+                <div class="event-box-title">
                     {{ event.title }}
-                </span> &middot;
-                <span class="text-muted">
+                </div>
+                <div class="event-box-subheader">
                     by {{ event.author }} | {{ event.date }}
-                </span>
-            </div>
-            <div class="card-body">
-                {{ event.body }}
+                </div>
             </div>
             <div>
-                {% load static %}
-                <img src="{% static event.image %}" alt="">
+                {{ event.body }}
+            </div>
+            <div class="event-image">
+                {% if event.image %}
+                <img src="{{ event.image.url }}" >
+                {% endif %}
             </div>
             <div class="card-footer text-center text-muted">
                 <a href="{% url 'event_update' event.pk %}">Edit</a> |

@@ -20,7 +20,7 @@ class EventDetailView(LoginRequiredMixin, DetailView):
 class EventCreateView(LoginRequiredMixin, CreateView):
     model = Event
     template_name = "event_create.html"
-    fields = ['title','body',]
+    fields = ['author', 'title','body','image','date']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
