@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Buy ticket{% endblock title %}
+
+{% block content %}
+    <h1>{{ ticket.event_id }}</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input class="btn btn-primary btn-lg news-button" type="submit" value="save">
+    </form>
+{% endblock content %}

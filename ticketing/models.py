@@ -6,6 +6,7 @@ class Event(models.Model):
     title = models.CharField(max_length=255)
     body = models.TextField()
     date = models.DateTimeField()
+    price = models.FloatField()
     author = models.ForeignKey(
         get_user_model(),
         on_delete=models.CASCADE)
@@ -16,3 +17,17 @@ class Event(models.Model):
     
     def get_absolute_url(self):
         return reverse('event_detail', args=[str(self.id)])
+
+class Ticket(models.Model):
+    ticket_holder_first_name = models.TextField(max_length=55)
+    ticket_holder_last_name = models.TextField(max_length=55)
+    ticket_holder_email = models.TextField(max_length=55)
+    
+    event_id = models.ForeignKey(
+        Event, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.ticket_holder_email
+
+    def get_absolute_url(self):
+        return reverse('ticket_detail', args=[str(self.id)])

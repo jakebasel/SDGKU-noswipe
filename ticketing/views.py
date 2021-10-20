@@ -5,7 +5,7 @@ from django.contrib.auth.mixins import (
 from django.http import request
 from django.urls.base import reverse
 from django.views.generic import ListView, DetailView
-from .models import Event
+from .models import Event, Ticket
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
@@ -42,4 +42,8 @@ class EventDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         obj = self.get_object()
         return obj.author == self.request.user
 
+class TicketDetailView(CreateView):
+    model = Ticket
+    template_name = "ticket_cart.html"
+    fields = ['ticket_holder_first_name', 'ticket_holder_email', 'event_id']
 
