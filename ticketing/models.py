@@ -1,4 +1,5 @@
 from django.db import models
+from django import forms
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 
@@ -19,10 +20,10 @@ class Event(models.Model):
         return reverse('event_detail', args=[str(self.id)])
 
 class Ticket(models.Model):
-    ticket_holder_first_name = models.TextField(max_length=55)
-    ticket_holder_last_name = models.TextField(max_length=55)
-    ticket_holder_email = models.TextField(max_length=55)
-    
+    ticket_holder_first_name = models.CharField(max_length=25)
+    ticket_holder_last_name = models.CharField(max_length=25)
+    ticket_holder_email = models.CharField(max_length=35)
+
     event_id = models.ForeignKey(
         Event, on_delete=models.CASCADE)
 

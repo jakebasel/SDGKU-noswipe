@@ -22,7 +22,7 @@
                 {% endif %}
             </div>
             <div class="card-footer text-center text-muted">
-                <a href="{% url 'ticket_cart' event.pk %}">Buy Ticket</a> |
+                <a href="{% url 'ticket_detail' event.pk %}">Buy Ticket</a> |
                 <a href="{% url 'event_update' event.pk %}">Edit</a> |
                 <a href="{% url 'event_delete' event.pk %}">Delete</a>
             </div>

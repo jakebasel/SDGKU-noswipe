@@ -25,6 +25,7 @@ class EventCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+        
 class EventUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Event
     template_name = "event_update.html"
@@ -45,5 +46,5 @@ class EventDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 class TicketDetailView(CreateView):
     model = Ticket
     template_name = "ticket_cart.html"
-    fields = ['ticket_holder_first_name', 'ticket_holder_email', 'event_id']
+    fields = ['ticket_holder_first_name', 'ticket_holder_last_name', 'ticket_holder_email', 'event_id']
 
