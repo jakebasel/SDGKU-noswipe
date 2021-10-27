@@ -16,12 +16,17 @@
             <div>
                 {{ event.body }}
             </div>
-            <div class="event-image">
+            <p> 
+                <!-- spacer -->
+            </p>
                 {% if event.image %}
                 <img src="{{ event.image.url }}" >
                 {% endif %}
-            </div>
+            <p>
+                <!-- spacer -->
+            </p>
             <div>
+
                 <a class="btn btn-dark" href="{% url 'ticket_detail' event.pk %}">Buy Ticket</a>
                 <a class="btn btn-dark" href="{% url 'event_update' event.pk %}">Edit</a>
                 <a class="btn btn-dark" href="{% url 'event_delete' event.pk %}">Delete</a>

@@ -3,8 +3,8 @@
 
 {% block content %}
     {% for article in object_list %}
-        <div class="card">
-            <div class="card-header">
+        <div class="event-box">
+            <div style="background-color: white;" class="card-header">
                 <span class="font-weight-bold">
                     {{ article.title }}
                 </span> &middot;
@@ -12,12 +12,12 @@
                     by {{ article.author }} | {{ article.date }}
                 </span>
             </div>
-            <div class="card-body">
+            <div style="background-color: white;" class="card-body">
                 {{ article.body }}
             </div>
             <div class="card-footer text-center text-muted">
-                <a href="{% url 'article_update' article.pk %}">Edit</a> |
-                <a href="{% url 'article_delete' article.pk %}">Delete</a>
+                <a class="btn btn-dark" href="{% url 'article_update' article.pk %}">Edit</a> |
+                <a class="btn btn-dark" href="{% url 'article_delete' article.pk %}">Delete</a>
             </div>
         </div>
         <br>

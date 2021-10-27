@@ -1,11 +1,17 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% block title %}Create Article{% endblock title %}
 
 {% block content %}
-    <h1>New Article</h1>
+<div class="event-box">
+        <h1>New Article</h1>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <input class="btn btn-primary btn-lg news-button" type="submit" value="save">
+        {{ form|crispy }}
+        <p>
+            <!-- spacer -->
+        </p>
+        <input class="btn btn-dark" type="submit" value="Create">
     </form>
+    </div>
 {% endblock content %}

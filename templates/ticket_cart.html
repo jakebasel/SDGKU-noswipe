@@ -4,9 +4,18 @@
 
 {% block content %}
     <h1>{{ ticket.event_id }}</h1>
+    <div class="event-box">
+        <h5 style="color:yellow">Fill out fields and select submit to request your ticket for the event. You will be emailed a confirmation within 3 business days.</h2>
     <form id="ticket-buy-form" method="POST">
+        <p>
+            <!-- spacer -->
+        </p>
         {% csrf_token %}
         {{ form|crispy }}
-        <input id="ticket-submission" class="btn btn-primary btn-lg news-button" onclick="checkValues()" type="submit" value="save">
+        <p>
+            <!-- spacer -->
+        </p>
+        <input id="ticket-submission" class="btn btn-dark" onclick="checkValues()" type="submit" value="Submit">
     </form>
+    </div>
 {% endblock content %}

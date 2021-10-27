@@ -1,3 +1,16 @@
+body{
+  background-color: rgb(20, 163, 173)
+}
+@media screen and (min-height: 400px) {
+  .navbar{
+    height: 40px
+  }
+  
+}
+.navbar{
+  height: 10vh;
+  min-height: 40px;
+}
 .main-container {
   display:flex;
   flex-direction: column;
@@ -25,16 +38,16 @@
   width:50%;
   margin-left: auto;
   margin-right: auto;
-  border-radius: 1px black solid;
   border: 1px black solid; 
   background-image: linear-gradient(gray, white);
   border-radius:10px;
   padding: 20px;
 }
-.event-image img{
-  width: 100%;
-  padding: 20px;
-  border-radius:10px;
+.event-box img{
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
 }
 .news-button {
   background-color: #bf3c3c;
