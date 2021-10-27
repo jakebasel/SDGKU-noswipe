@@ -4,7 +4,7 @@
 {% block content %}
     {% for article in object_list %}
         <div class="event-box">
-            <div style="background-color: white;" class="card-header">
+            <div style="background-color: black; color: white;" class="card-header">
                 <span class="font-weight-bold">
                     {{ article.title }}
                 </span> &middot;
@@ -15,7 +15,10 @@
             <div style="background-color: white;" class="card-body">
                 {{ article.body }}
             </div>
-            <div class="card-footer text-center text-muted">
+            <p>
+                <!-- spacer -->
+            </p>
+            <div class=" text-center text-muted">
                 <a class="btn btn-dark" href="{% url 'article_update' article.pk %}">Edit</a> |
                 <a class="btn btn-dark" href="{% url 'article_delete' article.pk %}">Delete</a>
             </div>
