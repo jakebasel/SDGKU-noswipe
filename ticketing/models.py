@@ -15,6 +15,7 @@ class Event(models.Model):
     image = models.ImageField(null=True, blank=True, upload_to='static/images/')
     current_attendee_count = models.BigIntegerField()
     max_attendee = models.BigIntegerField()
+    remaining_capacity = models.BigIntegerField()
 
     def __str__(self):
         return self.title

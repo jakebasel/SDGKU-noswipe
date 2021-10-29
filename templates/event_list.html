@@ -7,7 +7,6 @@
             <div>
                 <div class="event-box-title">
                     {{ event.title }}
-                    {{ event.id }}
                 </div>
                 <div class="event-box-subheader">
                     by {{ event.author }} | {{ event.date }}
@@ -29,6 +28,10 @@
                 <a class="btn btn-dark" href="{% url 'ticket_detail' event.pk %}">Buy Ticket</a> |
                 <a class="btn btn-dark" href="{% url 'event_update' event.pk %}">Edit</a> |
                 <a class="btn btn-dark" href="{% url 'event_delete' event.pk %}">Delete</a>
+                <p></p>
+                <p> Current Tickets Solds:  {{ event.current_attendee_count }}</p>
+                <p> Maximum Capacity: {{ event.max_attendee }} </p>
+                <p> Remaining Tickets: {{ event.remaining_capacity }} </p>
             </div>
         </div>
         <br>

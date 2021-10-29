@@ -45,11 +45,6 @@ class EventDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         obj = self.get_object()
         return obj.author == self.request.user
 
-#class TicketDetailView(CreateView):
-#    model = Ticket
-#    template_name = "ticket_cart.html"
-#    fields = ['ticket_holder_first_name', 'ticket_holder_last_name', 'ticket_holder_email', 'event_id']
-
 def ticket_create_view(request, pk, methods=['GET', 'POST']):
     if request.method == 'POST':
         form = TicketForm(request.POST)
@@ -59,6 +54,7 @@ def ticket_create_view(request, pk, methods=['GET', 'POST']):
             new_ticket.save()
             event = Event.objects.get(id=pk)
             event.current_attendee_count += 1
+            event.remaining_capacity = event.max_attendee - event.current_attendee_count
             event.save()
             return redirect('/ticketing')
     else:
