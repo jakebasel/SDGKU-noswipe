@@ -8,6 +8,8 @@ from django.views.generic import ListView, DetailView
 from .models import Event, Ticket
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.shortcuts import render, redirect
+from .forms import TicketForm
 
 class EventListView(ListView):
     model = Event
@@ -43,8 +45,23 @@ class EventDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         obj = self.get_object()
         return obj.author == self.request.user
 
-class TicketDetailView(CreateView):
-    model = Ticket
-    template_name = "ticket_cart.html"
-    fields = ['ticket_holder_first_name', 'ticket_holder_last_name', 'ticket_holder_email', 'event_id']
+#class TicketDetailView(CreateView):
+#    model = Ticket
+#    template_name = "ticket_cart.html"
+#    fields = ['ticket_holder_first_name', 'ticket_holder_last_name', 'ticket_holder_email', 'event_id']
+
+def ticket_create_view(request, pk, methods=['GET', 'POST']):
+    if request.method == 'POST':
+        form = TicketForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            new_ticket = Ticket(ticket_holder_first_name = data["ticket_holder_first_name"],ticket_holder_last_name = data["ticket_holder_last_name"], ticket_holder_email=data["ticket_holder_email"], event_id=data["event_id"])
+            new_ticket.save()
+            event = Event.objects.get(id=pk)
+            event.current_attendee_count += 1
+            event.save()
+            return redirect('/ticketing')
+    else:
+        form = TicketForm()
+        return render(request, 'ticket_cart.html', context={"form":form})
 

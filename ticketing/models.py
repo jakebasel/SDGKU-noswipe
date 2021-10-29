@@ -13,6 +13,8 @@ class Event(models.Model):
         get_user_model(),
         on_delete=models.CASCADE)
     image = models.ImageField(null=True, blank=True, upload_to='static/images/')
+    current_attendee_count = models.BigIntegerField()
+    max_attendee = models.BigIntegerField()
 
     def __str__(self):
         return self.title
@@ -24,7 +26,6 @@ class Ticket(models.Model):
     ticket_holder_first_name = models.CharField(validators=[validate_slug], max_length=25)
     ticket_holder_last_name = models.CharField(validators=[validate_slug], max_length=25)
     ticket_holder_email = models.EmailField(max_length=35)
-
     event_id = models.ForeignKey(
         Event, on_delete=models.CASCADE)
 
@@ -33,3 +34,5 @@ class Ticket(models.Model):
 
     def get_absolute_url(self):
         return reverse('ticket_detail', args=[str(self.id)])
+
+    
