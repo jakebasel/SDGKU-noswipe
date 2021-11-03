@@ -25,10 +25,16 @@
                 <!-- spacer -->
             </p>
             <div class="text-center text-muted">
-                <a class="btn btn-dark" href="{% url 'ticket_detail' event.pk %}">Buy Ticket</a> |
-                <a class="btn btn-dark" href="{% url 'event_update' event.pk %}">Edit</a> |
+
+                {% if user.is_authenticated %}
+                <a class="btn btn-dark" href="{% url 'ticket_detail' event.pk %}">Buy Ticket </a>
+                {% else %}        
+                <a class="btn btn-dark" href="{% url 'login' %}"> Log in to Buy Ticket</a>
+                {% endif %}
+                {% if user.is_authenticated and user.is_staff %}
+                | <a class="btn btn-dark" href="{% url 'event_update' event.pk %}">Edit</a> |
                 <a class="btn btn-dark" href="{% url 'event_delete' event.pk %}">Delete</a>
-                <p></p>
+                {% endif %}
                 <p> Current Tickets Solds:  {{ event.current_attendee_count }}</p>
                 <p> Maximum Capacity: {{ event.max_attendee }} </p>
                 <p> Remaining Tickets: {{ event.remaining_capacity }} </p>

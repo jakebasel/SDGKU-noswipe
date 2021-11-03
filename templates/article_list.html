@@ -18,10 +18,12 @@
             <p>
                 <!-- spacer -->
             </p>
+            {% if user.is_staff %}
             <div class=" text-center text-muted">
                 <a class="btn btn-dark" href="{% url 'article_update' article.pk %}">Edit</a> |
                 <a class="btn btn-dark" href="{% url 'article_delete' article.pk %}">Delete</a>
             </div>
+            {% endif %}
         </div>
         <br>
     {% endfor %}
