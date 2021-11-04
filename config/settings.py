@@ -31,6 +31,12 @@ DEBUG = env.bool('DEBUG', default=False)
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1",".herokuapp.com"]
 
+# debug requirement
+INTERNAL_IPS = [
+    # ...
+    '127.0.0.1',
+    # ...
+]
 
 # Application definition
 
@@ -41,7 +47,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles', 
-    
+    'debug_toolbar',
+
     # 3rd party
     'crispy_forms',
     #'whitenoise.runserver_nostatic',
@@ -54,6 +61,9 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    # debug toolbar
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    # default others
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
