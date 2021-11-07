@@ -6,13 +6,13 @@
         <div class="event-box">
             <div>
                 <div class="event-box-title">
-                    {{ event.title }}
+                    <a class="link-dark" href="{% url 'event_detail' event.pk %}">{{ event.title }}</a>
                 </div>
                 <div class="event-box-subheader">
                     by {{ event.author }} | {{ event.date }}
                 </div>
             </div>
-            <div>
+            <div class="event-list-text">
                 {{ event.body }}
             </div>
             <p> 
@@ -24,21 +24,6 @@
             <p>
                 <!-- spacer -->
             </p>
-            <div class="text-center text-muted">
-
-                {% if user.is_authenticated %}
-                <a class="btn btn-dark" href="{% url 'ticket_detail' event.pk %}">Buy Ticket </a>
-                {% else %}        
-                <a class="btn btn-dark" href="{% url 'login' %}"> Log in to Buy Ticket</a>
-                {% endif %}
-                {% if user.is_authenticated and user.is_staff %}
-                | <a class="btn btn-dark" href="{% url 'event_update' event.pk %}">Edit</a> |
-                <a class="btn btn-dark" href="{% url 'event_delete' event.pk %}">Delete</a>
-                {% endif %}
-                <p> Current Tickets Solds:  {{ event.current_attendee_count }}</p>
-                <p> Maximum Capacity: {{ event.max_attendee }} </p>
-                <p> Remaining Tickets: {{ event.remaining_capacity }} </p>
-            </div>
         </div>
         <br>
     {% endfor %}

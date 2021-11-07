@@ -32,6 +32,7 @@ html, body {
   justify-content: center;
   margin-left: auto;
   margin-right: auto;
+  padding:10px;
 }
 .noswipe-logo {
   width: 150px !important;
@@ -63,6 +64,8 @@ html, body {
   margin-left: auto;
   margin-right: auto;
   border-radius: 10px;
+  padding:5px;
+  margin-top: 5px;
 }
 .news-button {
   background-color: #bf3c3c;
@@ -71,4 +74,48 @@ html, body {
 .news-button:hover {
   background-color: black;
   border: none;
+}
+.event-list-text {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.event-capacity-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  border:1px solid black;
+  margin-top:10px;
+  margin-bottom: 10px;
+  padding: 5px 5px 5px 5px;
+  font-weight: bold;
+  background-color: rgb(145, 143, 143);
+  color:white;
+  border-radius: 10px;
+  width: 80%;
+  font-size: 10px;
+  gap:10px;
+}
+p {
+  margin:0px;
+  padding:0px;
+}
+img {
+  padding:5px;
+}
+.btn {
+  margin:5px;
+}
+.article-body-box {
+  padding: 5px;
+  background-color: white;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.artice-title-box {
+  padding:10px;
 }

@@ -1,8 +1,42 @@
 {% extends 'base.html' %}
-{% block title %}Event Detail{% endblock title %}
+{% block title %}Up{% endblock title %}
 
 {% block content %}
-    <h1>{{ event.title }}</h1>
-    <p>By: {{ event.author }}</p>
-    <p>{{ event.body }}</p>
+        <div class="event-box">
+            <div>
+                <div class="event-box-title">
+                    {{ event.title }}
+                </div>
+                <div class="event-box-subheader">
+                    by {{ event.author }} | {{ event.date }}
+                </div>
+            </div>
+            <div>
+                {{ event.body }}
+            </div>
+            <p> 
+                <!-- spacer -->
+            </p>
+                {% if event.image %}
+                <img src="{{ event.image.url }}" >
+                {% endif %}
+            <div class="text-center text-muted">
+                {% if user.is_authenticated %}
+                <a class="btn btn-dark" href="{% url 'ticket_detail' event.pk %}">Buy Ticket </a>
+                {% else %}        
+                <a class="btn btn-dark" href="{% url 'login' %}"> Log in to Buy Ticket</a>
+                {% endif %}
+                {% if user.is_authenticated and user.is_staff %}
+                | <a class="btn btn-dark" href="{% url 'event_update' event.pk %}">Edit</a> |
+                <a class="btn btn-dark" href="{% url 'event_delete' event.pk %}">Delete</a>
+                {% endif %}
+
+                <div class="event-capacity-box">
+                    <p> Tickets Solds: {{ event.current_attendee_count }} &nbsp| </p>
+                    <p> Maximum Capacity: {{ event.max_attendee }} &nbsp| </p>
+                    <p> Remaining Tickets: {{ event.remaining_capacity }} </p>
+                </div>
+            </div>
+        </div>
+        <br>
 {% endblock content %}
