@@ -32,11 +32,11 @@ DEBUG = env.bool('DEBUG', default=False)
 ALLOWED_HOSTS = ["localhost", "127.0.0.1",".herokuapp.com"]
 
 # debug requirement
-INTERNAL_IPS = [
+#INTERNAL_IPS = [
     # ...
-    '127.0.0.1',
+#    '127.0.0.1',
     # ...
-]
+#]
 
 # Application definition
 
@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles', 
-    'debug_toolbar',
+    #'debug_toolbar',
 
     # 3rd party
     'crispy_forms',
