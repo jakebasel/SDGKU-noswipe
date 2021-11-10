@@ -22,15 +22,25 @@ body {
     height: 40px
   }
 }
-@media (max-width:300px) {
+@media (max-width:575px) {
   .noswipe-logo {
     display: none;
+  }
+  .navbar-nav {
+  padding-top: 15px;
+  margin-left: 70%;
+  border-radius: 5px;
+  background-color: white;
+  }
+  .navbar-nav .nav-link{
+/*  */
   }
 }
 .navbar {
   height: 10vh;
   min-height: 40px;
 }
+
 .main-container {
   display:flex;
   flex-direction: column;
