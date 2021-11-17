@@ -38,6 +38,7 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         {% if user.is_staff %}
                         <li><a class="dropdown-item" href="{% url 'article_new' %}">Create Article</a></li>
+                        <li><a class="dropdown-item" href="{% url 'event_new' %}">Create Event</a></li>
                         {% endif %}
                         <li><a class="dropdown-item" href="{% url 'password_change' %}">Change Password</a></li>
                         <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>

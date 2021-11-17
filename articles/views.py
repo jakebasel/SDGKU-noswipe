@@ -30,6 +30,7 @@ class ArticleUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Article
     template_name = "article_update.html"
     fields = ['title', 'body']
+    success_url = reverse_lazy('article_list')
 
     def test_func(self):
         obj = self.get_object()

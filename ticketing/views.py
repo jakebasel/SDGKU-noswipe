@@ -9,7 +9,7 @@ from .models import Event, Ticket
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.shortcuts import render, redirect
-from .forms import TicketForm
+from .forms import EventForm, TicketForm
 
 class EventListView(ListView):
     model = Event
@@ -22,7 +22,8 @@ class EventDetailView(LoginRequiredMixin, DetailView):
 class EventCreateView(LoginRequiredMixin, CreateView):
     model = Event
     template_name = "event_create.html"
-    fields = ['author', 'title','body','image','date']
+    #fields = ['author', 'title','body','image','date', 'price', 'current_attendee_count', 'max_attendee', 'remaining_capacity']
+    form_class = EventForm
 
     def form_valid(self, form):
         form.instance.author = self.request.user

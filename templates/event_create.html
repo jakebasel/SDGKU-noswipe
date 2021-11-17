@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% block title %}Create Event{% endblock title %}
 
 {% block content %}
+<div class="event-box">
     <h1>New Event</h1>
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form|crispy }}
         {{ form.media }}
         <input class="btn btn-primary btn-lg news-button" type="submit" value="save">
     </form>
+</div>
 {% endblock content %}
