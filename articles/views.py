@@ -20,7 +20,8 @@ class ArticleDetailView(LoginRequiredMixin, DetailView):
 class ArticleCreateView(LoginRequiredMixin, CreateView):
     model = Article
     template_name = "article_create.html"
-    fields = ['title','body',]
+    fields = ['title','body','author']
+    success_url = reverse_lazy('article_list')
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -36,7 +37,7 @@ class ArticleUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 class ArticleDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Article
     template_name = "article_delete.html"
-    success_url = reverse_lazy('articles')
+    success_url = reverse_lazy('article_list')
 
     def test_func(self):
         obj = self.get_object()

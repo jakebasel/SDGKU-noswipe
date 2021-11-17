@@ -18,19 +18,18 @@
                 <!-- spacer -->
             </p>
                 {% if event.image %}
-                <img src="{{ event.image.url }}" >
+                    <img src="{{ event.image.url }}" >
                 {% endif %}
             <div class="text-center text-muted">
                 {% if user.is_authenticated %}
-                <a class="btn btn-dark" href="{% url 'ticket_detail' event.pk %}">Buy Ticket </a>
-                {% else %}        
-                <a class="btn btn-dark" href="{% url 'login' %}"> Log in to Buy Ticket</a>
+                    <a class="btn btn-dark" href="{% url 'ticket_detail' event.pk %}">Buy Ticket </a>
+                    {% else %}        
+                    <a class="btn btn-dark" href="{% url 'login' %}"> Log in to Buy Ticket</a>
                 {% endif %}
                 {% if user.is_authenticated and user.is_staff %}
-                | <a class="btn btn-dark" href="{% url 'event_update' event.pk %}">Edit</a> |
-                <a class="btn btn-dark" href="{% url 'event_delete' event.pk %}">Delete</a>
+                    | <a class="btn btn-dark" href="{% url 'event_update' event.pk %}">Edit</a> |
+                    <a class="btn btn-dark" href="{% url 'event_delete' event.pk %}">Delete</a>
                 {% endif %}
-
                 <div class="event-capacity-box">
                     <p> Tickets Solds: {{ event.current_attendee_count }} &nbsp| </p>
                     <p> Maximum Capacity: {{ event.max_attendee }} &nbsp| </p>

@@ -31,7 +31,7 @@ class EventCreateView(LoginRequiredMixin, CreateView):
 class EventUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Event
     template_name = "event_update.html"
-    fields = ['title', 'body']
+    fields = ['title', 'body', 'image','date']
 
     def test_func(self):
         obj = self.get_object()
@@ -39,7 +39,7 @@ class EventUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 class EventDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Event
     template_name = "event_delete.html"
-    success_url = reverse_lazy('Events')
+    success_url = reverse_lazy('event_list')
 
     def test_func(self):
         obj = self.get_object()
