@@ -61,4 +61,3 @@ def ticket_create_view(request, pk, methods=['GET', 'POST']):
     else:
         form = TicketForm()
         return render(request, 'ticket_cart.html', context={"form":form})
-
